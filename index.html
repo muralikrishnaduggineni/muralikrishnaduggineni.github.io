@@ -12,30 +12,67 @@
 </a> -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>My Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h2 {
+      font-size: 2em;
+    }
+    p {
+      font-size: 1em;
+      line-height: 1.5;
+    }
+    button {
+      padding: 10px 20px;
+      background: #0078ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      width: 100%;
+      max-width: 200px;
+      display: block;
+      margin-top: 10px;
+    }
+    a {
+      display: inline-block;
+    }
+    @media (max-width: 600px) {
+      body {
+        margin: 10px;
+        padding: 0 5px;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 0.9em;
+      }
+      button {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h2>Murali Krishna Duggineni.</h2>
-<p>
-  Hi! I’m a Software Engineer specializing in data systems and large-scale data processing.
-My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving challenging problems — whether it’s optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I’m always open to collaboration and new opportunities.
-</p>
-
-<a href="mailto:duggineni.muralikrishna@gmail.com">
- <button style="
-    padding:10px 20px;
-    background:#0078ff;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-  ">
-    Email Me
-  </button>
-</a>
-
+  <h2>Murali Krishna Duggineni.</h2>
+  <p>
+    Hi! I'm a Software Engineer specializing in data systems and large-scale data processing.
+    My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving challenging problems — whether it's optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I'm always open to collaboration and new opportunities.
+  </p>
+  <a href="mailto:duggineni.muralikrishna@gmail.com">
+    <button>Email Me</button>
+  </a>
 </body>
 </html>
