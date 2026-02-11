@@ -1,20 +1,7 @@
-<!-- <a href="mailto:duggineni.muralikrishna@gmail.com">
-  <button style="
-    padding:10px 20px;
-    background:#0078ff;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-  ">
-    Email Me
-  </button>
-</a> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Website</title>
+  <title>My Info Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
@@ -32,7 +19,7 @@
       font-size: 1em;
       line-height: 1.5;
     }
-    button {
+    .custom-btn {
       padding: 10px 20px;
       background: #0078ff;
       color: white;
@@ -44,9 +31,19 @@
       max-width: 200px;
       display: block;
       margin-top: 10px;
+      text-align: center;
+    }
+    .linkedin-btn {
+      background: #0A66C2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     a {
       display: inline-block;
+      width: 100%;
+      max-width: 200px;
     }
     @media (max-width: 600px) {
       body {
@@ -59,7 +56,10 @@
       p {
         font-size: 0.9em;
       }
-      button {
+      .custom-btn {
+        max-width: 100%;
+      }
+      a {
         max-width: 100%;
       }
     }
@@ -67,25 +67,22 @@
 </head>
 <body>
   <h2>Murali Krishna Duggineni</h2>
- 
   <p>
     Hi! I'm a Software Engineer specializing in data systems and large-scale data processing.
-    My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving challenging problems — whether it's optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I'm always open to collaboration and new opportunities.
+    My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving problems — whether it's optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I'm always open to collaboration and new opportunities.
   </p>
   <a href="mailto:duggineni.muralikrishna@gmail.com">
-  <button>Mail</button>
-</a>
-
-<a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">
-  <button style="background:#0A66C2; display:flex; align-items:center; justify-content:center; gap:8px;">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" 
-         alt="LinkedIn" 
-         width="18" 
-         height="18"
-         style="background:white; border-radius:3px; padding:2px;">
-    LinkedIn
-  </button>
-</a>
-
+    <button class="custom-btn">Email</button>
+  </a>
+  <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">
+    <button class="custom-btn linkedin-btn">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+           alt="LinkedIn"
+           width="14"
+           height="14"
+           style="filter: invert(1);">
+      LinkedIn
+    </button>
+  </a>
 </body>
 </html>
