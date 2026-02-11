@@ -1,5 +1,1 @@
-<small>Hi! I’m a Software Engineer specializing in data systems and large-scale data processing. 
-
-
-My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving challenging problems — whether it’s optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I’m always open to collaboration and new opportunities. </small>
 
