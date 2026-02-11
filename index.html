@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Info Website</title>
+  <title>My Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
@@ -19,31 +19,33 @@
       font-size: 1em;
       line-height: 1.5;
     }
+    .button-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
     .custom-btn {
-      padding: 10px 20px;
+      padding: 6px 12px; /* Smaller padding */
       background: #0078ff;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 1em;
-      width: 100%;
-      max-width: 200px;
-      display: block;
-      margin-top: 10px;
-      text-align: center;
-    }
-    .linkedin-btn {
-      background: #0A66C2;
+      font-size: 0.9em; /* Smaller font */
+      min-width: 90px;  /* Smaller min width */
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;         /* Smaller gap */
+      text-decoration: none;
+    }
+    .linkedin-btn {
+      background: #0A66C2;
     }
     a {
-      display: inline-block;
-      width: 100%;
-      max-width: 200px;
+      text-decoration: none;
     }
     @media (max-width: 600px) {
       body {
@@ -56,33 +58,38 @@
       p {
         font-size: 0.9em;
       }
-      .custom-btn {
-        max-width: 100%;
+      .button-row {
+        flex-direction: column;
+        gap: 10px;
       }
-      a {
-        max-width: 100%;
+      .custom-btn {
+        width: 100%;
+        min-width: unset;
       }
     }
   </style>
 </head>
 <body>
-  <h2>Murali Krishna Duggineni</h2>
+  <h2>Murali Krishna Duggineni.</h2>
+  <p>https://www.linkedin.com/in/murali-krishna-duggineni/<p>
   <p>
     Hi! I'm a Software Engineer specializing in data systems and large-scale data processing.
-    My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving problems — whether it's optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I'm always open to collaboration and new opportunities.
+    My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving challenging problems — whether it's optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. I'm always open to collaboration and new opportunities.
   </p>
-  <a href="mailto:duggineni.muralikrishna@gmail.com">
-    <button class="custom-btn">Email</button>
-  </a>
-  <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">
-    <button class="custom-btn linkedin-btn">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
-           alt="LinkedIn"
-           width="14"
-           height="14"
-           style="filter: invert(1);">
-      LinkedIn
-    </button>
-  </a>
+  <div class="button-row">
+    <a href="mailto:duggineni.muralikrishna@gmail.com">
+      <button class="custom-btn">Email Me</button>
+    </a>
+    <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">
+      <button class="custom-btn linkedin-btn">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+             alt="LinkedIn"
+             width="14"
+             height="14"
+             style="filter: invert(1);">
+        LinkedIn
+      </button>
+    </a>
+  </div>
 </body>
 </html>
