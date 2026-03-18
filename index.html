@@ -1,95 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0 10px;
-      max-width: 800px;
-      margin-left: 0; /* Move content to the left */
-      margin-right: auto;
-      text-align: left;
-    }
-    h2 {
-      font-size: 1em;
-    }
-    p {
-      font-size: 1em;
-      line-height: 1.5;
-    }
-    .button-row {
-      display: flex;
-      gap: 16px;
-      margin-top: 20px;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-    }
-    .custom-btn {
-      padding: 6px 12px; /* Smaller padding */
-      background: #0078ff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9em; /* Smaller font */
-      min-width: 90px;  /* Smaller min width */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;         /* Smaller gap */
-      text-decoration: none;
-    }
-    .linkedin-btn {
-      background: #0A66C2;
-    }
-    a {
-      text-decoration: none;
-    }
-    @media (max-width: 600px) {
-      body {
-        margin: 10px;
-        padding: 0 5px;
-      }
-      h2 {
-        font-size: 1.5em;
-      }
-      p {
-        font-size: 0.9em;
-      }
-      .button-row {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .custom-btn {
-        width: 100%;
-        min-width: unset;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murali Krishna Duggineni — Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;1,9..144,200&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f7f5f0;--ink:#1a1814;--muted:#8a8680;--accent:#2a5c45;--rule:#dbd8d0;--mono:'DM Mono',monospace;--serif:'Fraunces',serif}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.6;min-height:100vh}
+  .container{max-width:860px;margin:0 auto;padding:0 2rem}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);padding:1rem 0;opacity:0;transform:translateY(-8px);animation:fadeDown 0.6s 0.2s forwards}
+  nav .container{display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .hero{padding:14rem 0 8rem;opacity:0;animation:fadeUp 0.8s 0.5s forwards;border-top:none}
+  .hero-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.8rem;display:flex;align-items:center;gap:.75rem}
+  .hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--accent)}
+  .hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:200;font-style:italic;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;max-width:680px}
+  .hero h1 em{font-style:normal;font-weight:400}
+  .hero-sub{color:var(--muted);font-size:13px;max-width:480px;line-height:1.8}
+  .hero-meta{margin-top:1.5rem;display:flex;gap:2rem;flex-wrap:wrap}
+  .hero-meta-item{font-size:11px;color:var(--muted)}
+  .hero-meta-item a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color .2s}
+  .hero-meta-item a:hover{color:var(--ink)}
+  .hero-cta{margin-top:3rem;display:flex;gap:1.5rem;align-items:center}
+  .btn-primary{background:var(--ink);color:var(--bg);padding:.75rem 1.75rem;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+  .btn-primary:hover{background:var(--accent)}
+  .btn-ghost{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .2s,border-color .2s}
+  .btn-ghost:hover{color:var(--ink);border-color:var(--ink)}
+  section{padding:6rem 0;border-top:1px solid var(--rule)}
+  .section-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:3.5rem;display:flex;align-items:center;gap:1rem}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+  .timeline-item{display:grid;grid-template-columns:160px 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--rule)}
+  .timeline-item:last-child{border-bottom:none}
+  .timeline-period{font-size:10px;color:var(--muted);letter-spacing:.06em;line-height:1.7}
+  .timeline-company{font-size:11px;color:var(--accent);letter-spacing:.08em;margin-top:.4rem}
+  .timeline-role{font-family:var(--serif);font-weight:200;font-size:1.25rem;margin-bottom:1rem;line-height:1.2}
+  .timeline-bullets{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .timeline-bullets li{font-size:12px;color:var(--muted);line-height:1.75;padding-left:1.2rem;position:relative}
+  .timeline-bullets li::before{content:'--';position:absolute;left:0;color:var(--rule);font-size:10px;top:4px}
+  .timeline-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+  .stack-pill{font-size:10px;letter-spacing:.07em;padding:3px 10px;border:1px solid var(--rule);color:var(--muted)}
+  .skills-layout{display:grid;grid-template-columns:180px 1fr;gap:4rem}
+  .skills-nav{display:flex;flex-direction:column}
+  .skill-tab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.85rem 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:color .2s;background:none;border-right:none;border-left:none;border-top:none;text-align:left;font-family:var(--mono)}
+  .skill-tab:first-child{border-top:1px solid var(--rule)}
+  .skill-tab:hover{color:var(--ink)}
+  .skill-tab.active{color:var(--accent)}
+  .skills-panel{display:none}
+  .skills-panel.active{display:block}
+  .skills-panel h3{font-family:var(--serif);font-weight:200;font-size:1.5rem;margin-bottom:2rem;letter-spacing:-.01em}
+  .skill-bars{display:flex;flex-direction:column;gap:1.25rem}
+  .skill-row{display:grid;grid-template-columns:190px 1fr 36px;gap:1rem;align-items:center}
+  .skill-name{font-size:11px;color:var(--muted);letter-spacing:.05em}
+  .skill-bar-track{height:2px;background:var(--rule);position:relative;overflow:hidden}
+  .skill-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);width:0;transition:width 0.9s cubic-bezier(0.16,1,0.3,1)}
+  .skill-pct{font-size:10px;color:var(--muted);text-align:right}
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--rule);border:1px solid var(--rule)}
+  .edu-card{background:var(--bg);padding:2rem 2.5rem}
+  .edu-degree{font-family:var(--serif);font-weight:200;font-size:1.1rem;margin-bottom:.4rem;line-height:1.3}
+  .edu-year{font-size:11px;color:var(--accent);letter-spacing:.08em;margin-bottom:.6rem}
+  footer{border-top:1px solid var(--rule);padding:3rem 0}
+  footer .container{display:flex;align-items:center;justify-content:space-between}
+  .footer-left{font-size:11px;color:var(--muted)}
+  .footer-links{display:flex;gap:2rem}
+  .footer-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+  .footer-links a:hover{color:var(--ink)}
+  @keyframes fadeDown{to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+  @media(max-width:640px){
+    .timeline-item{grid-template-columns:1fr;gap:.5rem}
+    .skills-layout{grid-template-columns:1fr;gap:2rem}
+    .skills-nav{flex-direction:row;flex-wrap:wrap}
+    .skill-tab{border:none;border-bottom:2px solid transparent;padding:.5rem .8rem;font-size:10px}
+    .skill-tab.active{border-bottom-color:var(--accent)}
+    .edu-grid{grid-template-columns:1fr}
+    footer .container{flex-direction:column;gap:1.5rem;text-align:center}
+    .skill-row{grid-template-columns:120px 1fr 28px}
+  }
+</style>
 </head>
 <body>
-  <h2>Murali Krishna Duggineni</h2>
-  <p>
-    Hi! I'm a Software Engineer specializing in data systems and large-scale data processing.
-    My expertise lies in working with data frameworks and distributed systems such as Hadoop, Spark, and Kafka. I enjoy solving problems — whether it's optimizing data pipelines, handling high-throughput data streams, or designing scalable architectures. 
-  </p>
-  <div class="button-row">
-    <a href="mailto:duggineni.muralikrishna@gmail.com">
-      <button class="custom-btn">Email</button>
-    </a>
-    <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">
-      <button class="custom-btn linkedin-btn">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
-             alt="LinkedIn"
-             width="14"
-             height="14"
-             style="filter: invert(1);">
-        LinkedIn
-      </button>
-    </a>
+
+<nav>
+  <div class="container">
+    <a class="nav-logo" href="#">MKD</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="mailto:duggineni.muralikrishna@gmail.com">Contact</a></li>
+    </ul>
   </div>
+</nav>
+
+<section class="hero" style="border-top:none;padding-top:14rem">
+  <div class="container">
+    <p class="hero-eyebrow">Data Engineer &middot; 10 Years Experience</p>
+    <h1>Murali Krishna<br><em>Duggineni</em></h1>
+    <p class="hero-sub">Software engineer specializing in distributed data systems and Big Data infrastructure. Building scalable pipelines across Hadoop, Kafka, Spark, and cloud platforms &mdash; turning raw data into reliable, production-ready insight.</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">&#9993; <a href="mailto:duggineni.muralikrishna@gmail.com">duggineni.muralikrishna@gmail.com</a></span>
+      <span class="hero-meta-item">+1 415 964 1171</span>
+      <span class="hero-meta-item"><a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">LinkedIn &#8599;</a></span>
+    </div>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="mailto:duggineni.muralikrishna@gmail.com" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="section-label reveal">Professional Experience</p>
+    <div class="reveal">
+
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-period">May 2023 &mdash; Present</p>
+          <p class="timeline-company">Lowe's Inc &middot; Charlotte</p>
+        </div>
+        <div>
+          <h2 class="timeline-role">Data Engineer</h2>
+          <ul class="timeline-bullets">
+            <li>Engineered scalable SQL-based data pipelines for a labor forecasting product, leveraging BigQuery, MLflow, and Vertex AI for model predictions.</li>
+            <li>Collaborated with data science teams on a fraud detection project &mdash; built reliable workflows, implemented quality checks, and validated ML model outputs for production readiness.</li>
+            <li>Developed Python-based pipelines using Cloud Composer (Airflow) to ingest and transform data into BigQuery fact tables.</li>
+            <li>Designed and optimized BigQuery SQL queries for analytical and labor budget reporting, enabling downstream visualization in Looker.</li>
+            <li>Orchestrated Airflow workflows to migrate analytical datasets from Hive to BigQuery within SLA requirements.</li>
+            <li>Implemented API-based data ingestion using Python and SQL to load data into GCP datasets.</li>
+          </ul>
+          <div class="timeline-stack">
+            <span class="stack-pill">BigQuery</span><span class="stack-pill">MLflow</span><span class="stack-pill">Vertex AI</span><span class="stack-pill">Cloud Composer</span><span class="stack-pill">Airflow</span><span class="stack-pill">Python</span><span class="stack-pill">Looker</span><span class="stack-pill">Spark SQL</span><span class="stack-pill">Teradata</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-period">May 2018 &mdash; April 2023</p>
+          <p class="timeline-company">SAP America &middot; San Francisco</p>
+        </div>
+        <div>
+          <h2 class="timeline-role">Senior Hadoop Engineer</h2>
+          <ul class="timeline-bullets">
+            <li>Designed and operated distributed data systems on Hadoop, Kafka, Flink, and Hive across AWS, Azure, and GCP.</li>
+            <li>Deployed high-throughput Flink pipelines processing up to 100 MB/min alongside low-latency Hive SQL ad-hoc reporting.</li>
+            <li>Ingested ~10 TB of structured and semi-structured data from MySQL and Oracle into HDFS, Hive, and HBase using Python, Bash, and Sqoop.</li>
+            <li>Developed Oozie workflows to automate delta file merging, data processing, and Hive table loading.</li>
+            <li>Deployed microservices using Java and Bash on Kubernetes pods and Docker for enterprise applications.</li>
+            <li>Provisioned and upgraded Hadoop frameworks using Chef, Terraform, HDP Ambari, and Rundeck.</li>
+          </ul>
+          <div class="timeline-stack">
+            <span class="stack-pill">Kafka</span><span class="stack-pill">Flink</span><span class="stack-pill">Hive</span><span class="stack-pill">HDFS</span><span class="stack-pill">Oozie</span><span class="stack-pill">Kubernetes</span><span class="stack-pill">Docker</span><span class="stack-pill">Terraform</span><span class="stack-pill">AWS / Azure / GCP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-period">Jan 2016 &mdash; April 2018</p>
+          <p class="timeline-company">Gap Inc &middot; San Francisco</p>
+        </div>
+        <div>
+          <h2 class="timeline-role">Systems Engineer</h2>
+          <ul class="timeline-bullets">
+            <li>Designed and implemented a data lake with end-to-end pipelines for large-scale ingestion and processing.</li>
+            <li>Improved data ingestion throughput from 200 MB/hour to 300 MB/hour through benchmarking and stress testing.</li>
+            <li>Configured and maintained Hadoop stack components (Hive, HBase, Oozie, Spark) via HDP Ambari.</li>
+            <li>Automated log cleanup using shell scripts, managing application server storage at scale.</li>
+          </ul>
+          <div class="timeline-stack">
+            <span class="stack-pill">Hive</span><span class="stack-pill">HBase</span><span class="stack-pill">Oozie</span><span class="stack-pill">Spark</span><span class="stack-pill">HDP Ambari</span><span class="stack-pill">Shell</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <p class="timeline-period">Apr 2015 &mdash; Jan 2016</p>
+          <p class="timeline-company">American Express &middot; Phoenix</p>
+        </div>
+        <div>
+          <h2 class="timeline-role">Hadoop Engineer</h2>
+          <ul class="timeline-bullets">
+            <li>Built and managed Hadoop stack components including Hive, HBase, Oozie, and Spark.</li>
+            <li>Ingested datasets from RDBMS sources and created Hive and HBase tables for structured, semi-structured, and unstructured data.</li>
+            <li>Optimized Hive MapReduce resource schedulers for 10&ndash;20 GB tables per SLA policies.</li>
+            <li>Troubleshot failed services and outages related to network, memory, permissions, and exceptions.</li>
+          </ul>
+          <div class="timeline-stack">
+            <span class="stack-pill">Hive</span><span class="stack-pill">HBase</span><span class="stack-pill">Spark</span><span class="stack-pill">Oozie</span><span class="stack-pill">Pig Latin</span><span class="stack-pill">MapReduce</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Skills &amp; Tools</p>
+    <div class="skills-layout reveal">
+      <div class="skills-nav">
+        <button class="skill-tab active" data-tab="languages">Languages</button>
+        <button class="skill-tab" data-tab="bigdata">Big Data</button>
+        <button class="skill-tab" data-tab="cloud">Cloud &amp; DBs</button>
+        <button class="skill-tab" data-tab="devops">DevOps</button>
+      </div>
+      <div>
+        <div class="skills-panel active" id="tab-languages">
+          <h3>Programming Languages</h3>
+          <div class="skill-bars">
+            <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="97"></div></div><span class="skill-pct">97</span></div>
+            <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="95"></div></div><span class="skill-pct">95</span></div>
+            <div class="skill-row"><span class="skill-name">Bash / Shell</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div><span class="skill-pct">85</span></div>
+            <div class="skill-row"><span class="skill-name">Java</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="65"></div></div><span class="skill-pct">65</span></div>
+          </div>
+        </div>
+        <div class="skills-panel" id="tab-bigdata">
+          <h3>Big Data Frameworks</h3>
+          <div class="skill-bars">
+            <div class="skill-row"><span class="skill-name">Hadoop / HDFS</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="95"></div></div><span class="skill-pct">95</span></div>
+            <div class="skill-row"><span class="skill-name">Hive / HBase</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="93"></div></div><span class="skill-pct">93</span></div>
+            <div class="skill-row"><span class="skill-name">Apache Spark</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="90"></div></div><span class="skill-pct">90</span></div>
+            <div class="skill-row"><span class="skill-name">Airflow / Oozie</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="90"></div></div><span class="skill-pct">90</span></div>
+            <div class="skill-row"><span class="skill-name">Apache Kafka</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="88"></div></div><span class="skill-pct">88</span></div>
+            <div class="skill-row"><span class="skill-name">Apache Flink</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="82"></div></div><span class="skill-pct">82</span></div>
+          </div>
+        </div>
+        <div class="skills-panel" id="tab-cloud">
+          <h3>Cloud Platforms &amp; Databases</h3>
+          <div class="skill-bars">
+            <div class="skill-row"><span class="skill-name">Google BigQuery</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="95"></div></div><span class="skill-pct">95</span></div>
+            <div class="skill-row"><span class="skill-name">GCP (Vertex AI, Composer)</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="88"></div></div><span class="skill-pct">88</span></div>
+            <div class="skill-row"><span class="skill-name">MySQL / PostgreSQL / MongoDB</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div><span class="skill-pct">85</span></div>
+            <div class="skill-row"><span class="skill-name">AWS</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div><span class="skill-pct">80</span></div>
+            <div class="skill-row"><span class="skill-name">Databricks</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="78"></div></div><span class="skill-pct">78</span></div>
+            <div class="skill-row"><span class="skill-name">Microsoft Azure</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="76"></div></div><span class="skill-pct">76</span></div>
+          </div>
+        </div>
+        <div class="skills-panel" id="tab-devops">
+          <h3>DevOps &amp; Infrastructure</h3>
+          <div class="skill-bars">
+            <div class="skill-row"><span class="skill-name">Docker</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="83"></div></div><span class="skill-pct">83</span></div>
+            <div class="skill-row"><span class="skill-name">Kubernetes</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div><span class="skill-pct">80</span></div>
+            <div class="skill-row"><span class="skill-name">Terraform</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="78"></div></div><span class="skill-pct">78</span></div>
+            <div class="skill-row"><span class="skill-name">Jenkins</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="74"></div></div><span class="skill-pct">74</span></div>
+            <div class="skill-row"><span class="skill-name">Chef / Puppet</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div><span class="skill-pct">70</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">Education</p>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <p class="edu-year">2014</p>
+        <p class="edu-degree">Master of Science<br>in Information Technology</p>
+      </div>
+      <div class="edu-card">
+        <p class="edu-year">2012</p>
+        <p class="edu-degree">Bachelor of Technology<br>in Computer Science</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="footer-left">&copy; 2026 Murali Krishna Duggineni</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank">LinkedIn</a>
+      <a href="mailto:duggineni.muralikrishna@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  const tabs = document.querySelectorAll('.skill-tab');
+  function activateTab(tabEl) {
+    document.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.skills-panel').forEach(p => p.classList.remove('active'));
+    tabEl.classList.add('active');
+    const panel = document.getElementById('tab-' + tabEl.dataset.tab);
+    panel.classList.add('active');
+    panel.querySelectorAll('.skill-bar-fill').forEach(bar => {
+      bar.style.width = '0';
+      requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = bar.dataset.pct + '%'; }));
+    });
+  }
+  tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab)));
+  setTimeout(() => {
+    document.querySelectorAll('#tab-languages .skill-bar-fill').forEach(bar => { bar.style.width = bar.dataset.pct + '%'; });
+  }, 900);
+</script>
 </body>
 </html>
