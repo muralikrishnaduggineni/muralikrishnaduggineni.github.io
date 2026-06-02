@@ -69,13 +69,13 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
   color: var(--accent); margin-bottom: 1.75rem;
   display: flex; align-items: center; gap: 0.8rem;
 }
-.hero-overline::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+.hero-overline::before { display: none; }
 .hero h1 {
-  font-family: var(--serif); font-size: clamp(3.2rem, 5.5vw, 5rem);
-  font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
-  color: var(--ink); margin-bottom: 2.25rem;
+  font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 300; line-height: 1.25; letter-spacing: 0.02em;
+  color: var(--mid); margin-bottom: 2.25rem;
 }
-.hero h1 em { font-style: italic; font-weight: 400; }
+.hero h1 em { font-style: normal; font-weight: 300; color: var(--mid); }
 .hero-desc { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.9; max-width: 460px; margin-bottom: 2.75rem; }
 .hero-actions { display: flex; align-items: center; gap: 1.25rem; }
 .btn-primary {
@@ -196,7 +196,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
     <div class="hero-inner">
       <div>
         <p class="hero-overline">Data Engineer</p>
-        <h1>Murali<br>Krishna<br><em>Duggineni</em></h1>
+        <h1>Murali Krishna <em>Duggineni</em></h1>
         <p class="hero-desc">Software engineer with a decade of experience designing distributed data systems — from Hadoop clusters and Kafka pipelines to cloud-native BigQuery workflows and production ML infrastructure.</p>
         <div class="hero-actions">
           <a href="#experience" class="btn-primary">View Experience</a>
@@ -220,6 +220,7 @@ footer .container { display: flex; justify-content: space-between; align-items: 
           <p class="hero-info-label">Email</p>
           <p class="hero-info-val"><a href="mailto:duggineni.muralikrishna@gmail.com">duggineni.muralikrishna@gmail.com</a></p>
         </div>
+
         <div>
           <p class="hero-info-label">Availability</p>
           <p class="hero-info-val">Open to opportunities</p>
@@ -365,10 +366,6 @@ footer .container { display: flex; justify-content: space-between; align-items: 
         <div class="contact-row">
           <span class="c-label">Email</span>
           <a href="mailto:duggineni.muralikrishna@gmail.com" class="c-value">duggineni.muralikrishna@gmail.com</a>
-        </div>
-        <div class="contact-row">
-          <span class="c-label">Phone</span>
-          <a href="tel:+14159641171" class="c-value">+1 415 964 1171</a>
         </div>
         <div class="contact-row">
           <span class="c-label">LinkedIn</span>
