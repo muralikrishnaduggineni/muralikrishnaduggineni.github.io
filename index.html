@@ -3,192 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design 3 — Clean Technical</title>
+<title>Murali Krishna Duggineni — Data Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --white: #ffffff;
-  --bg: #f8f9fc;
-  --card: #ffffff;
-  --ink: #111827;
-  --mid: #6b7280;
-  --soft: #9ca3af;
-  --rule: #e5e7eb;
-  --blue: #2563eb;
-  --blue-lt: #eff6ff;
-  --blue-bd: #bfdbfe;
-  --sans: 'DM Sans', sans-serif;
-  --serif: 'DM Serif Display', serif;
+  --bg:      #f9f8f6;
+  --surface: #f2f0ec;
+  --border:  #e4e0d8;
+  --ink:     #1e1c18;
+  --mid:     #6e6a62;
+  --soft:    #a09b92;
+  --accent:  #3d5a4c;
+  --gold:    #c8a96e;
+  --serif:   'Cormorant Garamond', serif;
+  --sans:    'Outfit', sans-serif;
 }
+
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-.container { max-width: 980px; margin: 0 auto; padding: 0 2rem; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  z-index: 200;
+}
+
+.container { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; }
 
 /* NAV */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--rule); padding: 1rem 0;
-  opacity: 0; animation: fade 0.4s 0.1s forwards;
+  position: fixed; top: 2px; left: 0; right: 0; z-index: 100;
+  background: rgba(249,248,246,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  opacity: 0; animation: fadeDown 0.5s 0.15s ease forwards;
 }
-nav .container { display: flex; align-items: center; justify-content: space-between; }
-.nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-.nav-avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--blue); display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 500; color: white; letter-spacing: 0.02em;
+nav .container { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.nav-name {
+  font-family: var(--serif); font-size: 17px; font-weight: 400; font-style: italic;
+  color: var(--ink); text-decoration: none;
 }
-.nav-name-text { font-size: 13px; font-weight: 500; color: var(--ink); }
-.nav-links { display: flex; gap: 0.25rem; list-style: none; }
+.nav-links { display: flex; list-style: none; }
 .nav-links a {
-  font-size: 13px; font-weight: 400; color: var(--mid);
-  text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 6px;
-  transition: background 0.15s, color 0.15s;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--soft); text-decoration: none; padding: 0 1.25rem; transition: color 0.2s;
 }
-.nav-links a:hover { background: var(--bg); color: var(--ink); }
+.nav-links a:hover { color: var(--ink); }
 
 /* HERO */
-.hero {
-  padding: 10rem 0 5rem;
-  opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+.hero { padding: 12rem 0 7rem; opacity: 0; animation: fadeUp 0.8s 0.4s ease forwards; }
+.hero-inner { display: grid; grid-template-columns: 1fr 280px; gap: 6rem; align-items: end; }
+.hero-overline {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.75rem;
+  display: flex; align-items: center; gap: 0.8rem;
 }
-.hero-inner {
-  background: var(--card); border: 1px solid var(--rule);
-  border-radius: 16px; padding: 4rem;
-  display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
-  color: var(--blue); background: var(--blue-lt); border: 1px solid var(--blue-bd);
-  padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.5rem;
-}
-.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.hero-overline::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
 .hero h1 {
-  font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 400; line-height: 1.1; letter-spacing: -0.02em;
-  margin-bottom: 1rem; color: var(--ink);
+  font-family: var(--serif); font-size: clamp(3.2rem, 5.5vw, 5rem);
+  font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 2.25rem;
 }
-.hero h1 em { font-style: italic; }
-.hero-sub { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.8; max-width: 500px; margin-bottom: 2rem; }
-.hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.btn-blue {
-  font-size: 13px; font-weight: 500; text-decoration: none;
-  padding: 0.65rem 1.5rem; background: var(--blue); color: white;
-  border-radius: 8px; transition: background 0.2s;
+.hero h1 em { font-style: italic; font-weight: 400; }
+.hero-desc { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.9; max-width: 460px; margin-bottom: 2.75rem; }
+.hero-actions { display: flex; align-items: center; gap: 1.25rem; }
+.btn-primary {
+  font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 0.8rem 2rem; background: var(--accent); color: #fff;
+  text-decoration: none; transition: background 0.25s;
 }
-.btn-blue:hover { background: #1d4ed8; }
-.btn-soft {
-  font-size: 13px; font-weight: 500; text-decoration: none;
-  padding: 0.65rem 1.5rem; background: var(--bg); color: var(--mid);
-  border: 1px solid var(--rule); border-radius: 8px; transition: border-color 0.2s, color 0.2s;
+.btn-primary:hover { background: #2e4539; }
+.btn-secondary {
+  font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid); text-decoration: none;
+  border-bottom: 1px solid var(--border); padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
 }
-.btn-soft:hover { border-color: var(--soft); color: var(--ink); }
+.btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
 
-.hero-stats-col { display: flex; flex-direction: column; gap: 1px; min-width: 160px; }
-.h-stat-card {
-  background: var(--bg); border: 1px solid var(--rule);
-  border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 0.5rem;
+.hero-right {
+  display: flex; flex-direction: column; gap: 1.75rem;
+  padding-left: 2.5rem; border-left: 1px solid var(--border);
 }
-.h-stat-card:last-child { margin-bottom: 0; }
-.h-n { font-family: var(--serif); font-size: 1.9rem; font-style: italic; color: var(--blue); line-height: 1; margin-bottom: 0.25rem; }
-.h-l { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); }
+.hero-info-label {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--soft); margin-bottom: 0.3rem;
+}
+.hero-info-val { font-size: 13px; font-weight: 300; color: var(--mid); }
+.hero-info-val a { color: var(--accent); text-decoration: none; }
+.hero-info-val a:hover { text-decoration: underline; }
 
-/* SECTION */
-section { padding: 4rem 0; }
-.sec-hd { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
-.sec-hd-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
-.sec-hd h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+/* SECTIONS */
+section { padding: 6rem 0; }
+.sec-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
+.sec-tag {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(200,169,110,0.35); padding: 0.3rem 0.8rem;
+}
+.sec-title { font-family: var(--serif); font-size: 1.9rem; font-weight: 300; font-style: italic; color: var(--ink); }
+.sec-rule { flex: 1; height: 1px; background: var(--border); }
 
-/* EXP CARDS */
-.exp-cards { display: flex; flex-direction: column; gap: 1rem; }
-.exp-card {
-  background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-  transition: box-shadow 0.2s, border-color 0.2s;
+/* EXPERIENCE */
+.exp-item {
+  display: grid; grid-template-columns: 190px 1fr; gap: 4rem;
+  padding: 3rem 0; border-top: 1px solid var(--border);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
-.exp-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); border-color: var(--blue-bd); }
-.exp-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-.exp-role { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--ink); margin-bottom: 0.2rem; }
-.exp-co { font-size: 12px; font-weight: 500; color: var(--mid); }
-.exp-period {
-  font-size: 11px; font-weight: 500; color: var(--blue);
-  background: var(--blue-lt); border: 1px solid var(--blue-bd);
-  padding: 0.25rem 0.75rem; border-radius: 100px; white-space: nowrap;
+.exp-item:last-child { border-bottom: 1px solid var(--border); }
+.exp-item.in { opacity: 1; transform: none; }
+.exp-period { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.exp-company { font-size: 12px; font-weight: 300; color: var(--mid); line-height: 1.55; }
+.exp-role { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: 1rem; line-height: 1.2; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+.exp-bullets li { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.8; padding-left: 1.1rem; position: relative; }
+.exp-bullets li::before { content: ''; position: absolute; left: 0; top: 11px; width: 4px; height: 1px; background: var(--gold); }
+.exp-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.stack-tag {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.05em; color: var(--soft);
+  padding: 3px 10px; border: 1px solid var(--border); background: var(--surface);
+  transition: color 0.2s, border-color 0.2s;
 }
-.exp-desc { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.75; margin-bottom: 1.25rem; }
-.exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.exp-tag {
-  font-size: 11px; font-weight: 500; padding: 0.25rem 0.7rem;
-  background: var(--bg); border: 1px solid var(--rule);
-  color: var(--mid); border-radius: 6px;
-  transition: background 0.15s, color 0.15s;
-}
-.exp-tag:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-bd); }
+.stack-tag:hover { color: var(--accent); border-color: rgba(61,90,76,0.3); }
 
 /* SKILLS */
-#skills { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.skills-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.skill-card {
-  background: var(--bg); border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem;
+#skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; }
+.skill-group-name {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.25rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border);
 }
-.skill-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-.skill-card-title { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
-.skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-.skill-card ul li { font-size: 12px; font-weight: 400; color: var(--mid); display: flex; align-items: center; gap: 0.5rem; }
-.skill-card ul li::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--blue-bd); flex-shrink: 0; }
+.skill-group ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.skill-group ul li { font-size: 13px; font-weight: 300; color: var(--mid); display: flex; align-items: center; gap: 0.6rem; }
+.skill-group ul li::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
 /* CONTACT */
-.contact-card {
-  background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 3.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap;
-}
-.contact-card h2 { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
-.contact-card h2 em { font-style: italic; color: var(--blue); }
-.contact-card p { font-size: 13px; font-weight: 300; color: var(--mid); }
-.contact-btns { display: flex; flex-direction: column; gap: 0.6rem; }
-.contact-btn {
-  display: flex; align-items: center; gap: 0.75rem;
-  font-size: 12px; font-weight: 500; color: var(--mid);
-  text-decoration: none; padding: 0.6rem 1rem;
-  border: 1px solid var(--rule); border-radius: 8px;
-  background: var(--bg); transition: all 0.2s;
-  min-width: 300px;
-}
-.contact-btn:hover { border-color: var(--blue-bd); color: var(--blue); background: var(--blue-lt); }
-.contact-btn-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--rule); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.contact-left h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+.contact-left p { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.8; }
+.contact-row { display: flex; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--border); gap: 1.5rem; }
+.contact-row:first-child { border-top: 1px solid var(--border); }
+.c-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft); width: 54px; flex-shrink: 0; }
+.c-value { font-size: 13px; font-weight: 300; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+.c-value:hover { color: var(--accent); }
 
-footer { border-top: 1px solid var(--rule); padding: 1.5rem 0; }
-footer .container { display: flex; justify-content: space-between; }
-footer p { font-size: 11px; font-weight: 400; color: var(--soft); }
+footer { border-top: 1px solid var(--border); padding: 2rem 0; }
+footer .container { display: flex; justify-content: space-between; align-items: center; }
+.footer-name { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--soft); }
+.footer-loc { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; color: var(--soft); text-transform: uppercase; }
 
-@keyframes fade { to { opacity: 1; } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s, transform 0.6s; }
+@keyframes fadeDown { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px);} to { opacity:1; transform:none; } }
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
-@media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-stats-col { flex-direction: row; flex-wrap: wrap; }
-  .h-stat-card { flex: 1; min-width: 120px; }
-  .skills-cards { grid-template-columns: repeat(2, 1fr); }
-  .contact-card { flex-direction: column; }
-  .contact-btn { min-width: unset; width: 100%; }
+@media (max-width: 720px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-right { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 2rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  footer .container { flex-direction: column; gap: 0.5rem; }
 }
 </style>
 </head>
 <body>
+
 <nav>
   <div class="container">
-    <a class="nav-brand" href="#">
-      <div class="nav-avatar">MK</div>
-      <span class="nav-name-text">Murali Krishna Duggineni</span>
-    </a>
+    <a class="nav-name" href="#">Murali Krishna Duggineni</a>
     <ul class="nav-links">
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -201,92 +195,155 @@ footer p { font-size: 11px; font-weight: 400; color: var(--soft); }
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">Available for opportunities</div>
-        <h1>Murali Krishna<br><em>Duggineni</em></h1>
-        <p class="hero-sub">Software engineer with 10 years of experience designing distributed data systems. I build scalable pipelines, Big Data infrastructure, and production ML workflows across cloud platforms.</p>
-        <div class="hero-btns">
-          <a href="#experience" class="btn-blue">View Experience</a>
-          <a href="https://linkedin.com/in/murali-krishna-duggineni/" class="btn-soft">LinkedIn ↗</a>
+        <p class="hero-overline">Data Engineer</p>
+        <h1>Murali<br>Krishna<br><em>Duggineni</em></h1>
+        <p class="hero-desc">Software engineer with a decade of experience designing distributed data systems — from Hadoop clusters and Kafka pipelines to cloud-native BigQuery workflows and production ML infrastructure.</p>
+        <div class="hero-actions">
+          <a href="#experience" class="btn-primary">View Experience</a>
+          <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
         </div>
       </div>
-      <div class="hero-stats-col">
-        <div class="h-stat-card"><div class="h-n">10+</div><div class="h-l">Years</div></div>
-        <div class="h-stat-card"><div class="h-n">4</div><div class="h-l">Companies</div></div>
-        <div class="h-stat-card"><div class="h-n">10TB</div><div class="h-l">Data</div></div>
-        <div class="h-stat-card"><div class="h-n">3</div><div class="h-l">Clouds</div></div>
+      <div class="hero-right">
+        <div>
+          <p class="hero-info-label">Location</p>
+          <p class="hero-info-val">Charlotte, NC</p>
+        </div>
+        <div>
+          <p class="hero-info-label">Experience</p>
+          <p class="hero-info-val">10+ Years</p>
+        </div>
+        <div>
+          <p class="hero-info-label">Currently</p>
+          <p class="hero-info-val">Data Engineer at Lowe's Inc</p>
+        </div>
+        <div>
+          <p class="hero-info-label">Email</p>
+          <p class="hero-info-val"><a href="mailto:duggineni.muralikrishna@gmail.com">duggineni.muralikrishna@gmail.com</a></p>
+        </div>
+        <div>
+          <p class="hero-info-label">Availability</p>
+          <p class="hero-info-val">Open to opportunities</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<div style="height:1px;background:var(--border);"></div>
+
 <section id="experience">
   <div class="container">
-    <div class="sec-hd reveal"><div class="sec-hd-dot"></div><h2>Work Experience</h2></div>
-    <div class="exp-cards">
+    <div class="sec-header reveal">
+      <span class="sec-tag">Career</span>
+      <span class="sec-title">Work Experience</span>
+      <div class="sec-rule"></div>
+    </div>
 
-      <div class="exp-card reveal">
-        <div class="exp-card-head">
-          <div><div class="exp-role">Data Engineer</div><div class="exp-co">Lowe's Inc · Charlotte, NC</div></div>
-          <span class="exp-period">May 2023 – Present</span>
-        </div>
-        <p class="exp-desc">Engineered scalable BigQuery pipelines for labor forecasting using MLflow and Vertex AI. Collaborated on fraud detection workflows, built Cloud Composer (Airflow) ingestion pipelines, and migrated analytical datasets from Hive to BigQuery.</p>
-        <div class="exp-tags"><span class="exp-tag">BigQuery</span><span class="exp-tag">Airflow</span><span class="exp-tag">Vertex AI</span><span class="exp-tag">MLflow</span><span class="exp-tag">Python</span><span class="exp-tag">Spark SQL</span><span class="exp-tag">Looker</span></div>
+    <div class="exp-item">
+      <div>
+        <p class="exp-period">May 2023 – Present</p>
+        <p class="exp-company">Lowe's Inc<br>Charlotte, NC</p>
       </div>
-
-      <div class="exp-card reveal">
-        <div class="exp-card-head">
-          <div><div class="exp-role">Senior Hadoop Engineer</div><div class="exp-co">SAP America · San Francisco, CA</div></div>
-          <span class="exp-period">May 2018 – Apr 2023</span>
+      <div>
+        <p class="exp-role">Data Engineer</p>
+        <ul class="exp-bullets">
+          <li>Engineered scalable, SQL-based data pipelines for a labor forecasting product, leveraging BigQuery, MLflow, and Vertex AI for model predictions.</li>
+          <li>Collaborated with data science teams on fraud detection — building reliable workflows, implementing data quality checks, and validating ML model outputs for production.</li>
+          <li>Developed Python-based ingestion pipelines via Cloud Composer (Airflow) loading data into BigQuery fact tables.</li>
+          <li>Orchestrated Hive-to-BigQuery dataset migrations within SLA; optimized queries enabling downstream Looker visualizations.</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">BigQuery</span><span class="stack-tag">Cloud Composer</span><span class="stack-tag">Airflow</span>
+          <span class="stack-tag">Vertex AI</span><span class="stack-tag">MLflow</span><span class="stack-tag">Python</span>
+          <span class="stack-tag">Spark SQL</span><span class="stack-tag">Looker</span>
         </div>
-        <p class="exp-desc">Built distributed data systems across Kafka, Flink, and Hive on AWS, Azure, and GCP. Delivered high-throughput Flink pipelines (100 MB/min), ingested ~10 TB into HDFS and HBase, and deployed microservices on Kubernetes.</p>
-        <div class="exp-tags"><span class="exp-tag">Hadoop</span><span class="exp-tag">Kafka</span><span class="exp-tag">Flink</span><span class="exp-tag">Hive</span><span class="exp-tag">Kubernetes</span><span class="exp-tag">Docker</span><span class="exp-tag">Terraform</span></div>
       </div>
+    </div>
 
-      <div class="exp-card reveal">
-        <div class="exp-card-head">
-          <div><div class="exp-role">Systems Engineer</div><div class="exp-co">Gap Inc · San Francisco, CA</div></div>
-          <span class="exp-period">Jan 2016 – Apr 2018</span>
+    <div class="exp-item">
+      <div>
+        <p class="exp-period">May 2018 – Apr 2023</p>
+        <p class="exp-company">SAP America Inc<br>San Francisco, CA</p>
+      </div>
+      <div>
+        <p class="exp-role">Senior Hadoop Engineer</p>
+        <ul class="exp-bullets">
+          <li>Built distributed data systems across Hadoop, Kafka, Flink, and Hive on AWS, Azure, and GCP.</li>
+          <li>Delivered high-throughput Flink pipelines processing up to 100 MB/min alongside low-latency Hive SQL ad-hoc reporting.</li>
+          <li>Ingested approximately 10 TB of structured and semi-structured data from MySQL and Oracle into HDFS, Hive, and HBase.</li>
+          <li>Deployed microservices in Java and Bash on Kubernetes and Docker; provisioned Hadoop clusters via Chef, Terraform, and HDP Ambari.</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">Hadoop</span><span class="stack-tag">Kafka</span><span class="stack-tag">Flink</span>
+          <span class="stack-tag">Hive</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">Docker</span>
+          <span class="stack-tag">Terraform</span><span class="stack-tag">AWS · Azure · GCP</span>
         </div>
-        <p class="exp-desc">Designed and built a data lake and pipelines from scratch. Improved data ingestion from 200 to 300 MB/hr through benchmarking. Configured and maintained the full Hadoop stack using HDP Ambari.</p>
-        <div class="exp-tags"><span class="exp-tag">Hadoop</span><span class="exp-tag">Hive</span><span class="exp-tag">Spark</span><span class="exp-tag">HBase</span><span class="exp-tag">Oozie</span><span class="exp-tag">Shell</span></div>
       </div>
+    </div>
 
-      <div class="exp-card reveal">
-        <div class="exp-card-head">
-          <div><div class="exp-role">Hadoop Engineer</div><div class="exp-co">American Express · Phoenix, AZ</div></div>
-          <span class="exp-period">Apr 2015 – Jan 2016</span>
+    <div class="exp-item">
+      <div>
+        <p class="exp-period">Jan 2016 – Apr 2018</p>
+        <p class="exp-company">Gap Inc<br>San Francisco, CA</p>
+      </div>
+      <div>
+        <p class="exp-role">Systems Engineer</p>
+        <ul class="exp-bullets">
+          <li>Designed and implemented a data lake and supporting pipelines from scratch.</li>
+          <li>Improved data ingestion throughput from 200 MB/hr to 300 MB/hr through benchmarking and stress testing.</li>
+          <li>Configured Hadoop stack components — Hive, HBase, Oozie, Spark — and managed cluster maintenance via HDP Ambari.</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">Hadoop</span><span class="stack-tag">Hive</span><span class="stack-tag">HBase</span>
+          <span class="stack-tag">Spark</span><span class="stack-tag">Oozie</span><span class="stack-tag">Shell / Bash</span>
         </div>
-        <p class="exp-desc">Built and managed Hive, HBase, Oozie, and Spark components. Optimized MapReduce resource schedulers for 10–20 GB tables per SLA. Wrote Hive SQL and Pig Latin scripts for data ingestion and performance testing.</p>
-        <div class="exp-tags"><span class="exp-tag">Hive</span><span class="exp-tag">HBase</span><span class="exp-tag">MapReduce</span><span class="exp-tag">Spark</span><span class="exp-tag">Pig Latin</span></div>
       </div>
+    </div>
 
+    <div class="exp-item">
+      <div>
+        <p class="exp-period">Apr 2015 – Jan 2016</p>
+        <p class="exp-company">American Express<br>Phoenix, AZ</p>
+      </div>
+      <div>
+        <p class="exp-role">Hadoop Engineer</p>
+        <ul class="exp-bullets">
+          <li>Built and managed Hadoop stack components including Hive, HBase, Oozie, and Spark.</li>
+          <li>Ingested structured and semi-structured datasets from databases into Hive and HBase tables.</li>
+          <li>Optimized Hive MapReduce resource schedulers for 10–20 GB tables per SLA policies.</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">Hive</span><span class="stack-tag">HBase</span><span class="stack-tag">Oozie</span>
+          <span class="stack-tag">Spark</span><span class="stack-tag">MapReduce</span><span class="stack-tag">Pig Latin</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="container">
-    <div class="sec-hd reveal"><div class="sec-hd-dot"></div><h2>Skills & Tools</h2></div>
-    <div class="skills-cards reveal">
-      <div class="skill-card">
-        <div class="skill-card-icon">⌨️</div>
-        <p class="skill-card-title">Languages</p>
+    <div class="sec-header reveal">
+      <span class="sec-tag">Expertise</span>
+      <span class="sec-title">Skills & Tools</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <p class="skill-group-name">Languages</p>
         <ul><li>Python</li><li>SQL</li><li>Bash / Shell</li><li>Java</li></ul>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">⚡</div>
-        <p class="skill-card-title">Big Data</p>
-        <ul><li>Hadoop / HDFS</li><li>Apache Spark</li><li>Apache Kafka</li><li>Apache Flink</li><li>Hive / HBase</li></ul>
+      <div class="skill-group">
+        <p class="skill-group-name">Big Data</p>
+        <ul><li>Hadoop / HDFS</li><li>Apache Spark</li><li>Apache Kafka</li><li>Apache Flink</li><li>Hive / HBase</li><li>Airflow</li></ul>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">☁️</div>
-        <p class="skill-card-title">Cloud</p>
-        <ul><li>GCP / BigQuery</li><li>AWS</li><li>Azure</li><li>Databricks</li><li>Vertex AI</li></ul>
+      <div class="skill-group">
+        <p class="skill-group-name">Cloud Platforms</p>
+        <ul><li>GCP / BigQuery</li><li>AWS</li><li>Microsoft Azure</li><li>Databricks</li><li>Vertex AI / MLflow</li></ul>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">🛠️</div>
-        <p class="skill-card-title">DevOps & DB</p>
-        <ul><li>Airflow</li><li>Terraform / Chef</li><li>Docker / K8s</li><li>MySQL / PostgreSQL</li><li>MongoDB</li></ul>
+      <div class="skill-group">
+        <p class="skill-group-name">DevOps & Databases</p>
+        <ul><li>Terraform</li><li>Docker / Kubernetes</li><li>Chef / Jenkins</li><li>MySQL / PostgreSQL</li><li>MongoDB / Oracle</li></ul>
       </div>
     </div>
   </div>
@@ -294,32 +351,61 @@ footer p { font-size: 11px; font-weight: 400; color: var(--soft); }
 
 <section id="contact">
   <div class="container">
-    <div class="contact-card reveal">
-      <div>
-        <h2>Let's work<br><em>together.</em></h2>
-        <p>Open to full-time roles and freelance data engineering projects.</p>
+    <div class="sec-header reveal">
+      <span class="sec-tag">Get in Touch</span>
+      <span class="sec-title">Contact</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="contact-inner reveal">
+      <div class="contact-left">
+        <h2>Open to new<br>opportunities.</h2>
+        <p>Whether you're looking for a senior data engineer for a full-time role or a freelance engagement, I'd be glad to connect.</p>
       </div>
-      <div class="contact-btns">
-        <a href="mailto:duggineni.muralikrishna@gmail.com" class="contact-btn">
-          <div class="contact-btn-icon">✉️</div>
-          Email
-        </a>
-        <a href="https://linkedin.com/in/murali-krishna-duggineni/" class="contact-btn">
-          <div class="contact-btn-icon">in</div>
-          murali-krishna-duggineni ↗
-        </a>
+      <div>
+        <div class="contact-row">
+          <span class="c-label">Email</span>
+          <a href="mailto:duggineni.muralikrishna@gmail.com" class="c-value">duggineni.muralikrishna@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Phone</span>
+          <a href="tel:+14159641171" class="c-value">+1 415 964 1171</a>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/murali-krishna-duggineni/" target="_blank" class="c-value">murali-krishna-duggineni ↗</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer><div class="container"><p>© 2026 Murali Krishna Duggineni</p><p>Charlotte, NC</p></div></footer>
+<footer>
+  <div class="container">
+    <span class="footer-name">Murali Krishna Duggineni</span>
+    <span class="footer-loc">Charlotte, NC · 2026</span>
+  </div>
+</footer>
 
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'),i*80); obs.unobserve(e.target); }});
-}, {threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 90);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const expObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 120);
+        expObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.exp-item').forEach(el => expObs.observe(el));
 </script>
 </body>
 </html>
